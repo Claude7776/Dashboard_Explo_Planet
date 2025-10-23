@@ -116,13 +116,6 @@ NASA_challenge/
 └── template/
     └── dashboard.html
     ```
-3. Variables d’environnement (facultatif)
-
-  ```bash
-  FLASK_ENV=production
-  FLASK_APP=app.py
-  PORT=8000
-  ```
   ## 🧪 Tests & Débogage
 
   1. **Accès aux logs :**
