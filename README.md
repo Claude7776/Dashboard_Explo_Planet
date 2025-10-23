@@ -99,23 +99,23 @@ NASA_challenge/
 ├── .dockerignore
 ├── docker-compose.yml
 ├── requirements.txt
-├── deploy.sh --> # script pour lancer le deploiment du conteneur 
+├── deploy.sh
 ├── LICENSE
 ├── README.md
 ├── Dataset/
-│   └── exoplanets_simplified.csv
-|    └── list_planet_habitable.txt
-|    
+│   ├── exoplanets_simplified.csv
+│   └── list_planet_habitable.txt
 ├── static/
 │   ├── css/
-|   |   └── component.css
-|   |   └── layout.css
-|   |   └── theme.css
+│   │   ├── component.css
+│   │   ├── layout.css
+│   │   └── theme.css
 │   └── logo/
-|       └── logo.png   
+│       └── logo.png
 └── template/
     └── dashboard.html
     ```
+  --------------
   ## 🧪 Tests & Débogage
 
   1. **Accès aux logs :**
