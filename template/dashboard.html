@@ -19,7 +19,7 @@
             <p class="subtitle">Comparaison de la Terre avec une exoplanète candidate</p>
         </div>
     </header>
-    
+    <div id="galacticNav" class="container"></div>
     <div class="container">
         <div class="dashboard">
             <div class="filters">
@@ -313,8 +313,8 @@
             alert('Les données ont été exportées avec succès! Le fichier "donnees_planetes_habitables.csv" va être téléchargé.');
         });
 
-        const earthItem = document.querySelector('.planet-item[data-planet="earth"]');
-        if (earthItem) earthItem.click();
+        
     </script>
+    <script src="/static/script/nasa.js"></script>
 </body>
 </html>
