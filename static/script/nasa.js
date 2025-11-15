@@ -26,11 +26,13 @@ async function loadNEO() {
   Object.values(data.near_earth_objects)[0].forEach(obj => {
     planetsDiv.insertAdjacentHTML("beforeend", `
       <div class="planet-card">
+      <head>
         <div class="planet-image">☄️</div>
         <h3>${obj.name}</h3>
         <p>Diamètre: ${obj.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)} km</p>
         <p>Vitesse: ${obj.close_approach_data[0].relative_velocity.kilometers_per_hour} km/h</p>
       </div>
+      </head>
     `);
   });
 }
