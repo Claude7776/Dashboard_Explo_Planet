@@ -276,3 +276,32 @@ h1 {
   flex: 1;
 }
 
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  background: #1c1c3c;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #2e86de;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
