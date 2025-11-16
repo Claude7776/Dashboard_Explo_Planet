@@ -36,5 +36,33 @@ async function loadNEO() {
     `);
   });
 }
+
+function typeWriterEffect(element, text, speed = 50) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+function welcomeBotMessage() {
+  const messages = [
+    "👋 Bienvenue explorateur ! Prépare-toi à voyager entre Terre et exoplanètes…",
+    "🌌 Aujourd’hui, notre dashboard ouvre une fenêtre sur l’univers numérique.",
+    "🚀 Chaque planète dévoile ses secrets : distance, vitesse, habitabilité…",
+    "✨ Souviens-toi : les chiffres ne sont pas que des données, ce sont des histoires."
+  ];
+
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  const botElement = document.querySelector("#welcomeBot .bot-text");
+  botElement.textContent = ""; // reset
+  typeWriterEffect(botElement, randomMessage, 40);
+}
+
+window.addEventListener("DOMContentLoaded", welcomeBotMessage);
 loadNEO();
 loadAPOD();

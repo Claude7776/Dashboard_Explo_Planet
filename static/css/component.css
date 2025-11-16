@@ -14,8 +14,8 @@
 }
 
 .logo-img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
     border-radius: 50%;
 }
@@ -192,3 +192,87 @@ h1 {
 .filter-options input[type="range"] {
     width: 100%;
 }
+
+.dashboard-footer {
+  background: #105ba1;
+  color: #f0e6e6;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+  border-top: 2px solid #2e86de;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-nav a {
+  color: #f5f6fa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #0d2f50;
+}
+
+.welcome-bot {
+  background: linear-gradient(135deg, #0a0a2a, #1c1c3c);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeInBot 1.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInBot {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Orbite animée */
+.orbit {
+  width: 50px;
+  height: 50px;
+  border: 1px dashed #2e86de;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 6s linear infinite;
+}
+
+.planet {
+  width: 14px;
+  height: 14px;
+  background: #7fdbda;
+  border-radius: 50%;
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.bot-text {
+  font-family: "Courier New", monospace;
+  flex: 1;
+}
+
