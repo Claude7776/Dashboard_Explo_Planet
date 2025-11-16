@@ -128,6 +128,13 @@ NASA_challenge/
   ```bash
     docker ps
   ```
+
+  ## 🖼️ Aperçu du Dashboard
+
+Voici une capture d’écran du **Dashboard des Planètes Habitables** :
+
+![Dashboard NASA Challenge](/capture/Capture%20d’écran_2025-11-15_23-44-54.png)
+
 ## 📈 Prochaines améliorations
 
   ``-Intégration de données en temps réel (API NASA)``
