@@ -133,11 +133,9 @@ NASA_challenge/
 
 Voici une capture d’écran du **Dashboard des Planètes Habitables** :
 
-![Dashboard NASA Challenge](/capture/Capture%20d’écran_2025-11-15_23-44-54.png)
+![Dashboard NASA Challenge](/capture/simplescreenrecorder-2025-11-16_19.00.26%20(online-video-cutter.com).gif)
 
 ## 📈 Prochaines améliorations
-
-  ``-Intégration de données en temps réel (API NASA)``
 
   ``-Ajout de filtres avancés (habitabilité, distance, etc.)``
 
