@@ -60,7 +60,49 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
                         </button>
                     </div>
                 </div>
-                
+                <div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Navigation</h2>
+    <ul>
+      <li><a href="#stats">Statistiques</a></li>
+      <li><a href="#missions">Missions spatiales</a></li>
+      <li><a href="#comparison">Comparaison</a></li>
+      <li><a href="#observations">Observations récentes</a></li>
+      <li><a href="#legal">Mentions légales</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <!-- Section Statistiques -->
+    <section id="stats" class="dashboard-section">
+      <h2>📊 Statistiques globales</h2>
+      <div class="stats-cards">
+        <div class="card">🌍 Exoplanètes découvertes : 5,600+</div>
+        <div class="card">🔭 Missions actives : 12</div>
+        <div class="card">🚀 Dernière découverte : 2025</div>
+      </div>
+    </section>
+
+    <!-- Section Missions -->
+    <section id="missions" class="dashboard-section">
+      <h2>🛰️ Missions spatiales</h2>
+      <div class="mission-cards">
+        <div class="card">James Webb Telescope</div>
+        <div class="card">Kepler Legacy</div>
+        <div class="card">TESS Explorer</div>
+      </div>
+    </section>
+
+    <!-- Section Observations -->
+    <section id="observations" class="dashboard-section">
+      <h2>🔭 Observations récentes</h2>
+      <div class="planet-cards"></div>
+    </section>
+  </main>
+</div>
+
                 <div class="planet-cards">
                     <div class="planet-card earth">
                         <div class="planet-image">🌎</div>
@@ -325,7 +367,17 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
     </script>
     <footer class="dashboard-footer">
   <div class="footer-container">
-    <p><strong>© 2025 SKY-BLUE CORPORATION — Vivre dans un Univers Numérique</strong></p>
+  <p>🌌 Dashboard des Planètes Habitables</p>
+    <p>
+      Données issues du 
+      <a href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank" rel="noopener noreferrer">
+        NASA Exoplanet Archive
+      </a>
+    </p>
+    <p class="legal">
+      © 2025 SKY-BLUE CORPORATION — Données scientifiques fournies par la NASA.  
+      L’utilisation est soumise aux <a href="https://www.nasa.gov/nasa-brand-center/" target="_blank" rel="noopener noreferrer">mentions légales et conditions d’utilisation de la NASA</a>.
+    </p>
     <nav class="footer-nav">
      <div class="social-links">
   <a href="https://www.linkedin.com/in/claude-médine-gambigha" target="_blank" rel="noopener noreferrer">
