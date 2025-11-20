@@ -19,8 +19,13 @@
             <p class="subtitle">Comparaison de la Terre avec une exoplanète candidate</p>
         </div>
             <div id="welcomeBot" class="welcome-bot">
-  <div class="orbit">
-    <div class="planet"></div>
+   <div class="ovni">
+    <div class="dome"></div>
+    <div class="saucer"></div>
+    <div class="lights">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="beam"></div>
   </div>
   <div class="bot-text"></div>
 </div>
@@ -98,7 +103,11 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
     <!-- Section Observations -->
     <section id="observations" class="dashboard-section">
       <h2>🔭 Observations récentes</h2>
-      <div class="planet-cards"></div>
+  <div class="planet-cards"></div>
+  <div class="chart-box">
+    <div class="chart-title">Diamètres et vitesse des astéroïdes (km)</div>
+    <canvas id="neoChart"></canvas>
+  </div>
     </section>
   </main>
 </div>
@@ -175,7 +184,6 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
             </div>
         </div>
     </div>
-
     <script>
         const planets = {
             earth: {
@@ -342,7 +350,6 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
                 }
             });
         });
-
         document.getElementById('exportBtn').addEventListener('click', function() {
             let csvContent = "Planète,Distance (AL),Masse (M⊕),Rayon (R⊕),Période orbitale (jours),Température (°C),Flux stellaire,Habitabilité\r\n";
             csvContent += `Terre,${planets.earth.distance},${planets.earth.mass},${planets.earth.radius},${planets.earth.orbitalPeriod},${planets.earth.temperature},${planets.earth.flux},${planets.earth.habitability}\r\n`;
@@ -362,21 +369,18 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
             document.body.removeChild(link);
             alert('Les données ont été exportées avec succès! Le fichier "donnees_planetes_habitables.csv" va être téléchargé.');
         });
-
-        
     </script>
     <footer class="dashboard-footer">
   <div class="footer-container">
-  <p>🌌 Dashboard des Planètes Habitables</p>
     <p>
       Données issues du 
-      <a href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank" rel="noopener noreferrer">
+      <a href="https://exoplanetarchive.ipac.caltech.edu/" style="color: rgb(255, 255, 255)" target="_blank" rel="noopener noreferrer">
         NASA Exoplanet Archive
       </a>
     </p>
     <p class="legal">
       © 2025 SKY-BLUE CORPORATION — Données scientifiques fournies par la NASA.  
-      L’utilisation est soumise aux <a href="https://www.nasa.gov/nasa-brand-center/" target="_blank" rel="noopener noreferrer">mentions légales et conditions d’utilisation de la NASA</a>.
+      L’utilisation est soumise aux <a href="https://www.nasa.gov/nasa-brand-center/" style="color: rgb(255, 255, 255)" target="_blank" rel="noopener noreferrer">mentions légales et conditions d’utilisation de la NASA</a>.
     </p>
     <nav class="footer-nav">
      <div class="social-links">
