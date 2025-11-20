@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard des Planètes Habitables</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/static/css/theme.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
-    <link rel="stylesheet" href="/static/css/component.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
+    <!-- En-tête -->
     <header>
         <div class="logo-container">
             <img src="/static/logo/logo.png" alt="SKY-BLUE CORPORATION - Vivre dans un Univers Numérique" class="logo-img">
@@ -17,23 +16,31 @@
         <div class="container">
             <h1>Dashboard des Planètes Habitables</h1>
             <p class="subtitle">Comparaison de la Terre avec une exoplanète candidate</p>
+            <!-- Conteneur pour APOD -->
+            <div id="apodContainer"></div>
         </div>
-            <div id="welcomeBot" class="welcome-bot">
-   <div class="ovni">
-    <div class="dome"></div>
-    <div class="saucer"></div>
-    <div class="lights">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="beam"></div>
-  </div>
-  <div class="bot-text"></div>
-</div>
+        <div id="welcomeBot" class="welcome-bot">
+            <div class="ovni">
+                <div class="dome"></div>
+                <div class="saucer"></div>
+                <div class="lights">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="beam"></div>
+            </div>
+            <div class="bot-text" id="bot-text">Chargement des données NASA...</div>
+        </div>
     </header>
-    <div id="galacticNav" class="container"></div>
-    <div class="container">
-        <div class="dashboard">
-            <div class="filters">
+
+    <!-- Navigation principale -->
+    <nav id="galacticNav" class="container"></nav>
+
+    <!-- Contenu principal -->
+    <main class="container">
+        <div class="dashboard-container">
+            
+            <!-- Barre latérale avec filtres -->
+            <aside class="filters">
                 <h2>Sélection de Planète</h2>
                 <div class="planet-list">
                     <div class="planet-item selected" data-planet="earth">Terre (Référence)</div>
@@ -43,15 +50,22 @@
                     <div class="planet-item" data-planet="proxima">Proxima Centauri b (2016)</div>
                     <div class="planet-item" data-planet="lhs1140">LHS 1140 b (2017)</div>
                 </div>
-                
-                <h2>Informations</h2>
-                <p>Ce dashboard interactif compare la Terre, notre planète de référence, avec une exoplanète sélectionnée selon différents critères d’habitabilité définis par la recherche scientifique. L’utilisateur peut explorer et analyser des paramètres essentiels tels que la distance à l’étoile hôte, la masse et le rayon planétaire, la période orbitale, la température d’équilibre, ainsi que le flux stellaire reçu.
 
-Grâce à une interface visuelle et intuitive, chaque planète candidate est mise en perspective avec la Terre, permettant de comprendre rapidement ses similarités et différences. Les filtres dynamiques offrent la possibilité de cibler des mondes selon leur année de découverte, leur méthode de détection, ou encore leur potentiel d’habitabilité basé sur des facteurs comme la présence d’eau liquide, la stabilité orbitale ou la protection contre les radiations.                                                 </p>
+                <h2>Informations</h2>
+                <p>Ce dashboard interactif compare la Terre, notre planète de référence, avec des exoplanètes habitables.</p>
                 <p>Sélectionnez une planète dans la liste pour voir sa comparaison détaillée avec la Terre.</p>
-            </div>
-            
-            <div class="visualization">
+                <button id="refreshData" class="export-btn" style="margin-top: 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                    </svg>
+                    Actualiser les données NASA
+                </button>
+            </aside>
+
+            <!-- Section de visualisation -->
+            <section class="visualization">
+                <!-- En-tête de comparaison -->
                 <div class="comparison-header">
                     <h2>Comparaison Planétaire</h2>
                     <div>
@@ -65,338 +79,162 @@ Grâce à une interface visuelle et intuitive, chaque planète candidate est mis
                         </button>
                     </div>
                 </div>
-                <div class="dashboard">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <h2>Navigation</h2>
-    <ul>
-      <li><a href="#stats" style="color: rgb(255, 255, 255)">Statistiques</a></li>
-      <li><a href="#missions" style="color: rgb(255, 255, 255)">Missions spatiales</a></li>
-      <li><a href="#comparison" style="color: rgb(255, 255, 255)">Comparaison</a></li>
-      <li><a href="#observations" style="color: rgb(255, 255, 255)">Observations récentes</a></li>
-      <li><a href="#legal" style="color: rgb(255, 255, 255)">Mentions légales</a></li>
-    </ul>
-  </aside>
 
-  <!-- Main content -->
-  <main class="main-content">
-    <!-- Section Statistiques -->
-    <section id="stats" class="dashboard-section">
-      <h2>📊 Statistiques globales</h2>
-      <div class="stats-cards">
-        <div class="card">🌍 Exoplanètes découvertes : 5,600+</div>
-        <div class="card">🔭 Missions actives : 12</div>
-        <div class="card">🚀 Dernière découverte : 2025</div>
-      </div>
-    </section>
+                <!-- Navigation secondaire -->
+                <nav class="sidebar">
+                    <h2>Navigation</h2>
+                    <ul>
+                        <li><a href="#stats">Statistiques</a></li>
+                        <li><a href="#missions">Missions spatiales</a></li>
+                        <li><a href="#comparison">Comparaison</a></li>
+                        <li><a href="#observations">Astéroïdes (NEO)</a></li>
+                        <li><a href="#legal">Mentions légales</a></li>
+                    </ul>
+                </nav>
 
-    <!-- Section Missions -->
-    <section id="missions" class="dashboard-section">
-      <h2>🛰️ Missions spatiales</h2>
-      <div class="mission-cards">
-        <div class="card">James Webb Telescope</div>
-        <div class="card">Kepler Legacy</div>
-        <div class="card">TESS Explorer</div>
-      </div>
-    </section>
+                <!-- Contenu des sections -->
+                <div class="main-content">
+                    <!-- Section Statistiques -->
+                    <section id="stats" class="dashboard-section">
+                        <h2>📊 Statistiques globales</h2>
+                        <div class="stats-cards">
+                            <div class="card">🌍 Exoplanètes découvertes : 5,600+</div>
+                            <div class="card">🔭 Missions actives : 12</div>
+                            <div class="card">🚀 Dernière mise à jour : <span id="lastUpdate"></span></div>
+                        </div>
+                    </section>
 
-    <!-- Section Observations -->
-    <section id="observations" class="dashboard-section">
-      <h2>🔭 Observations récentes</h2>
-  <div class="planet-cards"></div>
-  <div class="chart-box">
-    <div class="chart-title">Diamètres et vitesse des astéroïdes (km)</div>
-    <canvas id="neoChart"></canvas>
-  </div>
-    </section>
-  </main>
-</div>
+                    <!-- Section Missions -->
+                    <section id="missions" class="dashboard-section">
+                        <h2>🛰️ Missions spatiales</h2>
+                        <div class="mission-cards">
+                            <div class="card">James Webb Telescope</div>
+                            <div class="card">Kepler Legacy</div>
+                            <div class="card">TESS Explorer</div>
+                        </div>
+                    </section>
 
-                <div class="planet-cards">
-                    <div class="planet-card earth">
-                        <div class="planet-image">🌎</div>
-                        <h3>Terre</h3>
-                        <p>Distance: 0 AL</p>
-                        <p>Masse: 1 M⊕</p>
-                        <p>Rayon: 1 R⊕</p>
-                        <p>Période orbitale: 365.25 jours</p>
-                        <div class="habitability-score">Habitabilité: 0.99</div>
-                    </div>
-                    
-                    <div class="planet-card">
-                        <div class="planet-image">🪐</div>
-                        <h3>Teegarden's Star c</h3>
-                        <p>Distance: 12.5 AL</p>
-                        <p>Masse: 1.1 M⊕</p>
-                        <p>Rayon: 1.04 R⊕</p>
-                        <p>Période orbitale: 11.4 jours</p>
-                        <div class="discovery-year">Découverte: 2019</div>
-                        <div class="habitability-score">Habitabilité: 0.84</div>
-                    </div>
-                </div>
-                
-                <div class="charts-container">
-                    <div class="chart-box">
-                        <div class="chart-title">Comparaison des Tailles (Rayon terrestre)</div>
-                        <canvas id="sizeChart"></canvas>
-                    </div>
-                    
-                    <div class="chart-box">
-                        <div class="chart-title">Température d'équilibre (°C)</div>
-                        <canvas id="tempChart"></canvas>
-                    </div>
-                    
-                    <div class="chart-box">
-                        <div class="chart-title">Flux Stellaire Reçu (Terre=1)</div>
-                        <canvas id="fluxChart"></canvas>
-                    </div>
-                    
-                    <div class="chart-box">
-                        <div class="chart-title">Facteurs d'Habitabilité</div>
-                        <div class="key-factors">
-                            <div class="factor">
-                                <div>Eau liquide potentielle</div>
-                                <div class="factor-bar">
-                                    <div class="factor-value" style="width: 95%"></div>
-                                </div>
+                    <!-- Section Comparaison -->
+                    <section id="comparison" class="dashboard-section">
+                        <h2>🌌 Comparaison Planétaire</h2>
+                        <div class="planet-cards">
+                            <div class="planet-card earth">
+                                <div class="planet-image">🌎</div>
+                                <h3>Terre</h3>
+                                <p>Distance: 0 AL</p>
+                                <p>Masse: 1 M⊕</p>
+                                <p>Rayon: 1 R⊕</p>
+                                <p>Période orbitale: 365.25 jours</p>
+                                <div class="habitability-score">Habitabilité: 0.99</div>
                             </div>
-                            <div class="factor">
-                                <div>Atmosphère potentielle</div>
-                                <div class="factor-bar">
-                                    <div class="factor-value" style="width: 90%"></div>
-                                </div>
+                            
+                            <div class="planet-card" id="selectedExoplanet">
+                                <div class="planet-image">🪐</div>
+                                <h3>Teegarden's Star c</h3>
+                                <p>Distance: 12.5 AL</p>
+                                <p>Masse: 1.1 M⊕</p>
+                                <p>Rayon: 1.04 R⊕</p>
+                                <p>Période orbitale: 11.4 jours</p>
+                                <div class="discovery-year">Découverte: 2019</div>
+                                <div class="habitability-score">Habitabilité: 0.84</div>
                             </div>
-                            <div class="factor">
-                                <div>Stabilité orbitale</div>
-                                <div class="factor-bar">
-                                    <div class="factor-value" style="width: 98%"></div>
-                                </div>
+                        </div>
+
+                        <!-- Graphiques de comparaison -->
+                        <div class="charts-container">
+                            <div class="chart-box">
+                                <div class="chart-title">Comparaison des Tailles (Rayon terrestre)</div>
+                                <canvas id="sizeChart"></canvas>
                             </div>
-                            <div class="factor">
-                                <div>Protection contre les radiations</div>
-                                <div class="factor-bar">
-                                    <div class="factor-value" style="width: 85%"></div>
+                            
+                            <div class="chart-box">
+                                <div class="chart-title">Température d'équilibre (°C)</div>
+                                <canvas id="tempChart"></canvas>
+                            </div>
+                            
+                            <div class="chart-box">
+                                <div class="chart-title">Flux Stellaire Reçu (Terre=1)</div>
+                                <canvas id="fluxChart"></canvas>
+                            </div>
+                            
+                            <div class="chart-box">
+                                <div class="chart-title">Facteurs d'Habitabilité</div>
+                                <div class="key-factors">
+                                    <div class="factor">
+                                        <div>Eau liquide potentielle</div>
+                                        <div class="factor-bar">
+                                            <div class="factor-value" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="factor">
+                                        <div>Atmosphère potentielle</div>
+                                        <div class="factor-bar">
+                                            <div class="factor-value" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="factor">
+                                        <div>Stabilité orbitale</div>
+                                        <div class="factor-bar">
+                                            <div class="factor-value" style="width: 98%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="factor">
+                                        <div>Protection contre les radiations</div>
+                                        <div class="factor-bar">
+                                            <div class="factor-value" style="width: 85%"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
+
+                    <!-- Section Observations (NEO) -->
+                    <section id="observations" class="dashboard-section">
+                        <h2>☄️ Astéroïdes Proches (NEO)</h2>
+                        <div id="neoPlanets" class="planet-cards">
+                            <div class="loading">Chargement des données NEO...</div>
+                        </div>
+                        <div class="chart-box">
+                            <div class="chart-title">Diamètres des Astéroïdes (km)</div>
+                            <canvas id="neoChart"></canvas>
+                        </div>
+                    </section>
                 </div>
-            </div>
+            </section>
         </div>
-    </div>
-    <script>
-        const planets = {
-            earth: {
-                name: "Terre",
-                distance: 0,
-                mass: 1,
-                radius: 1,
-                temperature: 15,
-                flux: 1,
-                orbitalPeriod: 365.25,
-                habitability: 0.99,
-                factors: { water: 95, atmosphere: 90, stability: 98, radiation: 85 }
-            },
-            teegarden: {
-                name: "Teegarden's Star c",
-                distance: 12.5,
-                mass: 1.1,
-                radius: 1.04,
-                temperature: -47,
-                flux: 0.72,
-                orbitalPeriod: 11.4,
-                habitability: 0.84,
-                factors: { water: 80, atmosphere: 70, stability: 85, radiation: 60 }
-            },
-            kepler1229: {
-                name: "Kepler-1229 b",
-                distance: 49.5,
-                mass: 2.7,
-                radius: 1.4,
-                temperature: -48,
-                flux: 0.73,
-                orbitalPeriod: 86.7,
-                habitability: 0.79,
-                factors: { water: 75, atmosphere: 65, stability: 80, radiation: 55 }
-            },
-            trappist1f: {
-                name: "TRAPPIST-1 f",
-                distance: 39.5,
-                mass: 0.93,
-                radius: 1.04,
-                temperature: -65,
-                flux: 0.38,
-                orbitalPeriod: 9.2,
-                habitability: 0.76,
-                factors: { water: 70, atmosphere: 60, stability: 75, radiation: 50 }
-            },
-            proxima: {
-                name: "Proxima Centauri b",
-                distance: 4.24,
-                mass: 1.27,
-                radius: 1.1,
-                temperature: -39,
-                flux: 0.65,
-                orbitalPeriod: 11.2,
-                habitability: 0.87,
-                factors: { water: 85, atmosphere: 75, stability: 90, radiation: 60 }
-            },
-            lhs1140: {
-                name: "LHS 1140 b",
-                distance: 40.7,
-                mass: 6.38,
-                radius: 1.73,
-                temperature: -50,
-                flux: 0.46,
-                orbitalPeriod: 24.7,
-                habitability: 0.81,
-                factors: { water: 78, atmosphere: 68, stability: 83, radiation: 58 }
-            }
-        };
+    </main>
 
-        const sizeCtx = document.getElementById('sizeChart').getContext('2d');
-        const tempCtx = document.getElementById('tempChart').getContext('2d');
-        const fluxCtx = document.getElementById('fluxChart').getContext('2d');
-
-        const sizeChart = new Chart(sizeCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Terre', 'Teegarden c'],
-                datasets: [{ label: 'Rayon (Terre=1)', data: [1, 1.04], backgroundColor: ['#2e86de', '#7fdbda'] }]
-            },
-            options: {
-                responsive: true,
-                scales: { y: { beginAtZero: true, title: { display: true, text: 'Rayon terrestre (R⊕)' } } }
-            }
-        });
-
-        const tempChart = new Chart(tempCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Terre', 'Teegarden c'],
-                datasets: [{ label: 'Température (°C)', data: [15, -47], backgroundColor: ['#2e86de', '#7fdbda'] }]
-            },
-            options: {
-                responsive: true,
-                scales: { y: { title: { display: true, text: 'Température (°C)' } } }
-            }
-        });
-
-        const fluxChart = new Chart(fluxCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Terre', 'Teegarden c'],
-                datasets: [{ label: 'Flux stellaire (Terre=1)', data: [1, 0.72], backgroundColor: ['#2e86de', '#7fdbda'] }]
-            },
-            options: {
-                responsive: true,
-                scales: { y: { beginAtZero: true, title: { display: true, text: 'Flux stellaire (S⊕)' } } }
-            }
-        });
-
-        document.querySelectorAll('.planet-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const prev = document.querySelector('.planet-item.selected');
-                if (prev) prev.classList.remove('selected');
-                this.classList.add('selected');
-
-                const planetId = this.getAttribute('data-planet');
-                const planet = planets[planetId];
-
-                document.querySelector('.selected-planet span').textContent = planet.name;
-
-                const planetCard = document.querySelector('.planet-card:not(.earth)');
-                planetCard.querySelector('h3').textContent = planet.name;
-                planetCard.querySelector('.planet-image').textContent = planetId === 'earth' ? '🌎' : '🪐';
-
-                const pElems = planetCard.querySelectorAll('p');
-                if (pElems.length >= 4) {
-                    pElems[0].textContent = `Distance: ${planet.distance} AL`;
-                    pElems[1].textContent = `Masse: ${planet.mass} M⊕`;
-                    pElems[2].textContent = `Rayon: ${planet.radius} R⊕`;
-                    pElems[3].textContent = `Période orbitale: ${planet.orbitalPeriod} jours`;
-                }
-
-                const discoveryYearElem = planetCard.querySelector('.discovery-year');
-                if (planetId !== 'earth') {
-                    const match = this.textContent.match(/\((\d{4})\)/);
-                    const year = match ? match[1] : '';
-                    discoveryYearElem.textContent = year ? `Découverte: ${year}` : '';
-                    discoveryYearElem.style.display = year ? 'block' : 'none';
-                } else {
-                    discoveryYearElem.style.display = 'none';
-                }
-
-                planetCard.querySelector('.habitability-score').textContent = `Habitabilité: ${planet.habitability}`;
-
-                sizeChart.data.labels = ['Terre', planet.name];
-                sizeChart.data.datasets[0].data = [1, planet.radius];
-                sizeChart.update();
-
-                tempChart.data.labels = ['Terre', planet.name];
-                tempChart.data.datasets[0].data = [15, planet.temperature];
-                tempChart.update();
-
-                fluxChart.data.labels = ['Terre', planet.name];
-                fluxChart.data.datasets[0].data = [1, planet.flux];
-                fluxChart.update();
-
-                const factorEls = document.querySelectorAll('.factor-value');
-                if (factorEls.length >= 4) {
-                    factorEls[0].style.width = `${planet.factors.water}%`;
-                    factorEls[1].style.width = `${planet.factors.atmosphere}%`;
-                    factorEls[2].style.width = `${planet.factors.stability}%`;
-                    factorEls[3].style.width = `${planet.factors.radiation}%`;
-                }
-            });
-        });
-        document.getElementById('exportBtn').addEventListener('click', function() {
-            let csvContent = "Planète,Distance (AL),Masse (M⊕),Rayon (R⊕),Période orbitale (jours),Température (°C),Flux stellaire,Habitabilité\r\n";
-            csvContent += `Terre,${planets.earth.distance},${planets.earth.mass},${planets.earth.radius},${planets.earth.orbitalPeriod},${planets.earth.temperature},${planets.earth.flux},${planets.earth.habitability}\r\n`;
-            for (const [key, planet] of Object.entries(planets)) {
-                if (key !== 'earth') {
-                    csvContent += `${planet.name},${planet.distance},${planet.mass},${planet.radius},${planet.orbitalPeriod},${planet.temperature},${planet.flux},${planet.habitability}\r\n`;
-                }
-            }
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.setAttribute('href', url);
-            link.setAttribute('download', 'donnees_planetes_habitables.csv');
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            alert('Les données ont été exportées avec succès! Le fichier "donnees_planetes_habitables.csv" va être téléchargé.');
-        });
-    </script>
+    <!-- Pied de page -->
     <footer class="dashboard-footer">
-  <div class="footer-container">
-    <p>
-      Données issues du 
-      <a href="https://exoplanetarchive.ipac.caltech.edu/" style="color: rgb(255, 255, 255)" target="_blank" rel="noopener noreferrer">
-        NASA Exoplanet Archive
-      </a>
-    </p>
-    <p class="legal">
-      © 2025 SKY-BLUE CORPORATION — Données scientifiques fournies par la NASA.  
-      L’utilisation est soumise aux <a href="https://www.nasa.gov/nasa-brand-center/" style="color: rgb(255, 255, 255)" target="_blank" rel="noopener noreferrer">mentions légales et conditions d’utilisation de la NASA</a>.
-    </p>
-    <nav class="footer-nav">
-     <div class="social-links">
-  <a href="https://www.linkedin.com/in/claude-médine-gambigha" target="_blank" rel="noopener noreferrer">
-    <img src="/capture/link.png" alt="LinkedIn" class="social-icon"> LinkedIn
-  </a>
-  <a href="https://www.facebook.com/claudeGba10/" target="_blank" rel="noopener noreferrer">
-    <img src="/capture/logofbk.png" alt="Facebook" class="social-icon"> Facebook
-  </a>
-  <a href="https://github.com/Claude7776/" target="_blank" rel="noopener noreferrer">
-    <img src="/capture/logogithub.png" alt="Github" class="social-icon"> Github
-  </a>
-</div>
-    </nav>
-  </div>
-</footer>
+        <div class="footer-container">
+            <p>
+                Données issues des APIs 
+                <a href="https://api.nasa.gov/" target="_blank" rel="noopener noreferrer">
+                    NASA
+                </a>
+            </p>
+            <p class="legal">
+                © 2025 SKY-BLUE CORPORATION — <a href="https://www.earthdata.nasa.gov/" target="_blank" rel="noopener noreferrer"> Données scientifiques fournies par la NASA.
+                    </a>
+            </p>
+            <nav class="footer-nav">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/claude-médine-gambigha" target="_blank" rel="noopener noreferrer">
+                        <img src="/capture/link.png" alt="LinkedIn" class="social-icon"> LinkedIn
+                    </a>
+                    <a href="https://www.facebook.com/claudeGba10/" target="_blank" rel="noopener noreferrer">
+                        <img src="/capture/logofbk.png" alt="Facebook" class="social-icon"> Facebook
+                    </a>
+                    <a href="https://github.com/Claude7776/" target="_blank" rel="noopener noreferrer">
+                        <img src="/capture/logogithub.png" alt="Github" class="social-icon"> Github
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts JavaScript -->
     <script src="/static/script/nasa.js"></script>
 </body>
 </html>

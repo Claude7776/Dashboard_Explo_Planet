@@ -33,7 +33,7 @@ RUN useradd --create-home --shell /bin/false appuser && chown -R appuser:appuser
 USER appuser
 
 # Exposer le port
-EXPOSE 8000
+EXPOSE 5000
 
 # Commande de démarrage en production avec gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "app:app"]

@@ -22,7 +22,7 @@ echo "🎯 Démarrage des services..."
 docker-compose up -d
 
 echo "⏳ Attente du démarrage du service web..."
-until curl -fsS http://localhost:8000 &> /dev/null; do
+until curl -fsS http://localhost:5000 &> /dev/null; do
     echo "⏳ Web service pas encore prêt..."
     sleep 5
 done
@@ -34,4 +34,4 @@ echo ""
 echo "✅ Déploiement terminé !!!"
 echo ""
 echo "🌐 URLs d'accès:"
-echo "   - Application: http://localhost:8000"
+echo "   - Application: http://localhost:5000"
