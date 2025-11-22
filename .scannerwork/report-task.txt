@@ -1,0 +1,6 @@
+projectKey=github_pat_11BKZOH2Q0tclEvjV3eGve_AouSPdbeYJTqorLxDBbwALRipb3bV4M5IWQQNvOfVqEE4C
+serverUrl=http://localhost:9000
+serverVersion=25.11.0.114957
+dashboardUrl=http://localhost:9000/dashboard?id=github_pat_11BKZOH2Q0tclEvjV3eGve_AouSPdbeYJTqorLxDBbwALRipb3bV4M5IWQQNvOfVqEE4C
+ceTaskId=805ecbc8-6216-418a-a165-df34f83ceee2
+ceTaskUrl=http://localhost:9000/api/ce/task?id=805ecbc8-6216-418a-a165-df34f83ceee2
