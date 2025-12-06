@@ -117,17 +117,18 @@
 
                 // Injection des cartes
                 planetsDiv.innerHTML = '';
-                limitedAsteroids.forEach(obj => {
-                    planetsDiv.insertAdjacentHTML("beforeend", `
-                        <div class="planet-card">
-                            <div class="planet-image">☄️</div>
-                            <h3>${obj.name}</h3>
-                            <p>Diamètre: ${obj.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)} km</p>
-                            <p>Vitesse: ${parseFloat(obj.close_approach_data[0].relative_velocity.kilometers_per_hour).toFixed(0)} km/h</p>
-                            <p>Distance: ${parseFloat(obj.close_approach_data[0].miss_distance.kilometers).toFixed(0)} km</p>
-                        </div>
-                    `);
-                });
+
+for (const obj of limitedAsteroids) {
+    planetsDiv.insertAdjacentHTML("beforeend", `
+        <div class="planet-card">
+            <div class="planet-image">☄️</div>
+            <h3>${obj.name}</h3>
+            <p>Diamètre: ${obj.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)} km</p>
+            <p>Vitesse: ${Number.parseFloat(obj.close_approach_data[0].relative_velocity.kilometers_per_hour).toFixed(0)} km/h</p>
+            <p>Distance: ${Number.parseFloat(obj.close_approach_data[0].miss_distance.kilometers).toFixed(0)} km</p>
+        </div>
+    `);
+}
 
                 // Préparation des données pour Chart.js
                 const labels = limitedAsteroids.map(obj => 
@@ -458,7 +459,8 @@ function startBotAnimation() {
     "🔭 Chaque clic est une observation, chaque filtre une exploration interstellaire.",
     "💫 Derrière chaque chiffre se cache une aventure cosmique prête à être racontée.",
     "🌠 Le ciel n’est pas une limite, mais une invitation à découvrir l’infini.",
-    "📊 Les données deviennent des constellations numériques, reliant science et imagination."
+    "📊 Les données deviennent des constellations numériques, reliant science et imagination.",
+    "De la Terre 🌍 aux exoplanètes, en gardant un œil sur les comètes qui frôlent notre ciel.",
     ];
     
     let messageIndex = 0;
